@@ -1,6 +1,5 @@
 from time import sleep
 import visualizer as vs
-
 test = False
 
 
@@ -40,8 +39,8 @@ class Array:
 
     def get_len(self):
         return len(self.values)
-
-
+    
+    
 def bubble_sort(nums):  # n^2
     # We set swapped to True so the loop looks runs at least once
     swapped = True
@@ -54,6 +53,27 @@ def bubble_sort(nums):  # n^2
                 # Set the flag to True so we'll loop again
                 swapped = True
 
+
+#########################################
+
+def counting_sort(nums):
+	#trying python first time , indentations are really tough, unable to resolve it tried a lot.
+	k = -1
+	for i in range(nums.get_len() - 1):
+            if nums.values[i] > k:
+            	k = nums.values  #getting largest element here to initialize the count array.
+	c = [0]*(k + 1)
+    for i in range(nums.get_len()-1):
+        c[nums.values[i]] = c[nums.values[i]] + 1
+ 
+    # Find the last index for each element
+    	c[nums.values[0]] = c[nums.values[0]] - 1 # to decrement each element for zero-based indexing
+    	for i in range(1, k + 1):
+        	c.values[i] = c.values[i] + c.values[i - 1]
+    		result = [None]*nums.get_len()-1;
+    return result
+
+#########################################
 
 def selection_sort(nums):  # n^2
     # This value of i corresponds to how many values were sorted
